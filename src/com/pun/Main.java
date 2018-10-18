@@ -10,6 +10,85 @@ public class Main {
 
     }
 
+    //https://www.hackerrank.com/challenges/migratory-birds/problem
+    static class Bird implements Comparable<Bird> {
+        int type;
+        int seenAmount;
+
+        public Bird(int type, int seenAmount) {
+            this.type = type;
+            this.seenAmount = seenAmount;
+        }
+
+        public int getType() {
+            return type;
+        }
+
+        public void setType(int type) {
+            this.type = type;
+        }
+
+        public int getSeenAmount() {
+            return seenAmount;
+        }
+
+        public void setSeenAmount(int seenAmount) {
+            this.seenAmount = seenAmount;
+        }
+
+        @Override
+        public int compareTo(Bird o) {
+            return Integer.compare(this.seenAmount, o.seenAmount);
+        }
+    }
+
+    static int migratoryBirds(List<Integer> arr) {
+        Bird typeOne = new Bird(1,0);
+        Bird typeTwo = new Bird(2,0);
+        Bird typeThree = new Bird(3,0);
+        Bird typeFour = new Bird(4,0);
+        Bird typeFive = new Bird(5,0);
+
+        Bird[] birdArray = {typeOne, typeTwo, typeThree, typeFour, typeFive};
+
+        int maxAmount = 0;
+        Bird birdWithMaxAmount = null;
+
+        for (int i = 0; i < arr.size(); i++) {
+            int amount;
+            if (arr.get(i) == 1) {
+                amount = typeOne.getSeenAmount();
+                typeOne.setSeenAmount(amount + 1);
+            } else if (arr.get(i) == 2) {
+                amount = typeTwo.getSeenAmount();
+                typeTwo.setSeenAmount(amount + 1);
+
+            } else if (arr.get(i) == 3) {
+                amount = typeThree.getSeenAmount();
+                typeThree.setSeenAmount(amount + 1);
+
+            } else if (arr.get(i) == 4) {
+                amount = typeFour.getSeenAmount();
+                typeFour.setSeenAmount(amount + 1);
+
+            } else if (arr.get(i) == 5) {
+                amount = typeFive.getSeenAmount();
+                typeFive.setSeenAmount(amount + 1);
+
+            }
+        }
+
+        for (int i = 0; i < birdArray.length; i++) {
+            if (birdArray[i].getSeenAmount() > maxAmount) {
+                maxAmount = birdArray[i].getSeenAmount();
+                birdWithMaxAmount = birdArray[i];
+            }
+        }
+
+        return birdWithMaxAmount.getType();
+
+    }
+
     // https://www.hackerrank.com/challenges/divisible-sum-pairs/problem
     static int divisibleSumPairs(int n, int k, int[] ar) {
         Arrays.sort(ar);
