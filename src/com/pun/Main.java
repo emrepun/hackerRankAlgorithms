@@ -11,6 +11,28 @@ public class Main {
 
     }
 
+    //https://www.hackerrank.com/challenges/electronics-shop/problem
+    static int getMoneySpent(int[] keyboards, int[] drives, int b) {
+        int sum = 0;
+        ArrayList<Integer> possibleCombinations = new ArrayList<>();
+
+        for (int i = 0; i < keyboards.length; i++) {
+            for (int j = 0; j < drives.length; j++) {
+                if (keyboards[i] + drives[j] <= b) {
+                    possibleCombinations.add(keyboards[i] + drives[j]);
+                }
+            }
+        }
+
+        Collections.sort(possibleCombinations);
+
+        if (possibleCombinations.isEmpty()) {
+            return -1;
+        } else {
+            return possibleCombinations.get(possibleCombinations.size() - 1);
+        }
+    }
+
     //https://www.hackerrank.com/challenges/drawing-book/problem
     static int pageCount(int n, int p) {
         int startingPage = 1;
