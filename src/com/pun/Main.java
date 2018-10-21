@@ -1,5 +1,6 @@
 package com.pun;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Main {
@@ -7,6 +8,66 @@ public class Main {
     public static void main(String[] args) {
 
         // Challenge links are given above each function.
+
+    }
+
+    //https://www.hackerrank.com/challenges/drawing-book/problem
+    static int pageCount(int n, int p) {
+        int startingPage = 1;
+        int turnCounter = 0;
+
+        if (p == 1 || p == n) {
+            return 0;
+        } else if (p % 2 == 0) {
+            turnCounter = p / 2;
+        } else {
+            turnCounter = (p-1) / 2;
+        }
+
+        if (p > n / 2) {
+            return (n/2) - turnCounter;
+        } else {
+            return turnCounter;
+        }
+    }
+
+    static void bonAppetit(List<Integer> bill, int k, int b) {
+        int sum = 0;
+
+        for (Integer i: bill) {
+            sum += i;
+        }
+
+        int annaLoad = (sum - bill.get(k)) / 2 ;
+
+        if (b == annaLoad) {
+            System.out.println("Bon Appetit");
+        } else {
+            System.out.println(b - annaLoad);
+        }
+    }
+
+    //https://www.hackerrank.com/challenges/day-of-the-programmer/problem
+    static String dayOfProgrammer(int year) {
+        int mergeYear = 1918;
+
+        if (year > mergeYear) {
+            if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0) ) {
+                return "12.09." + year;
+            } else {
+                return "13.09." + year;
+            }
+        } else if (year == mergeYear) {
+
+            return "26.09.1918";
+
+        } else {
+            if (year % 4 == 0) {
+                return "12.09." + year;
+            } else {
+                return "13.09." + year;
+            }
+        }
 
     }
 
