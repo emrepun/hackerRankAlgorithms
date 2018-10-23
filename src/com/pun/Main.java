@@ -11,6 +11,111 @@ public class Main {
 
     }
 
+    //https://www.hackerrank.com/challenges/climbing-the-leaderboard/problem
+    static int[] climbingLeaderboard(int[] scores, int[] alice) {
+        int currentVal = 0;
+        int rankCounter = 0;
+        int[] rankingArray = new int[scores.length];
+        int[] alicePositions = new int[alice.length];
+        for (int i = 0; i < scores.length; i++) {
+            if (scores[i] != currentVal) {
+                rankCounter++;
+                currentVal = scores[i];
+            }
+            rankingArray[i] = rankCounter;
+        }
+
+        int k = 0;
+        int innerCounter = 0;
+        for (int i = 0; i < alice.length; i++) {
+            while (alice[i] < scores[k]) {
+                innerCounter++;
+                k++;
+
+                if (k == scores.length) {
+                    break;
+                }
+            }
+
+            k = 0;
+
+            if (innerCounter == scores.length) {
+                alicePositions[i] = rankingArray[innerCounter - 1] + 1;
+            } else {
+                alicePositions[i] = rankingArray[innerCounter];
+            }
+
+            innerCounter = 0;
+        }
+
+        return alicePositions;
+    }
+
+    //https://www.hackerrank.com/challenges/picking-numbers/problem
+    static int pickingNumbers(List<Integer> a) {
+        int counter = 0;
+        int selectedNumber = 0;
+        int subArrayCount = 0;
+        Collections.sort(a);
+        for (int i = 0; i < a.size(); i++) {
+            int innerCounter = 0;
+            for (int j = i+1; j < a.size(); j++) {
+                if (Math.abs(a.get(i) - a.get(j)) <= 1) {
+                    innerCounter++;
+                    if (innerCounter > counter) {
+                        selectedNumber = a.get(i);
+                        counter = innerCounter;
+                    }
+                }
+            }
+        }
+
+        for (int i: a) {
+            if (i == selectedNumber || i == selectedNumber + 1) {
+                subArrayCount++;
+            }
+        }
+
+        return subArrayCount;
+    }
+
+    //https://www.hackerrank.com/challenges/magic-square-forming/problem
+    static int formingMagicSquare(int[][] s) {
+        int cost[] = {0,0,0,0,0,0,0,0};
+        int t[][] =
+                {
+                        {4,9,2,3,5,7,8,1,6},
+                        {4,3,8,9,5,1,2,7,6},
+                        {2,9,4,7,5,3,6,1,8},
+                        {2,7,6,9,5,1,4,3,8},
+                        {8,1,6,3,5,7,4,9,2},
+                        {8,3,4,1,5,9,6,7,2},
+                        {6,7,2,1,5,9,8,3,4},
+                        {6,1,8,7,5,3,2,9,4},
+                };
+
+        for(int i=0;i<8;i++)
+        {
+            cost[i] = Math.abs(t[i][0]-s[0][0]) + Math.abs(t[i][1]-s[0][1]) + Math.abs(t[i][2]-s[0][2]);
+            cost[i] = cost[i] + Math.abs(t[i][3]-s[1][0]) + Math.abs(t[i][4]-s[1][1]) + Math.abs(t[i][5]-s[1][2]);
+            cost[i] = cost[i] + Math.abs(t[i][6]-s[2][0]) + Math.abs(t[i][7]-s[2][1]) + Math.abs(t[i][8]-s[2][2]);
+        }
+
+        Arrays.sort(cost);
+        return cost[0];
+    }
+
+    //https://www.hackerrank.com/challenges/cats-and-a-mouse/problem
+    static String catAndMouse(int x, int y, int z) {
+        if (Math.abs(x - z) == Math.abs(y - z)) {
+            return "Mouse C";
+        } else if (Math.abs(x - z) < Math.abs(y - z)) {
+            return "Cat A";
+        } else {
+            return "Cat B";
+        }
+    }
+
     //https://www.hackerrank.com/challenges/electronics-shop/problem
     static int getMoneySpent(int[] keyboards, int[] drives, int b) {
         int sum = 0;
