@@ -11,6 +11,80 @@ public class Main {
 
     }
 
+    //https://www.hackerrank.com/challenges/angry-professor/problem
+    static String angryProfessor(int k, int[] a) {
+        int lateCounter = 0;
+
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] > 0) {
+                lateCounter++;
+            }
+        }
+
+        if ((a.length - lateCounter) < k) {
+            return "YES";
+        } else {
+            return "NO";
+        }
+
+    }
+
+    //https://www.hackerrank.com/challenges/utopian-tree/problem
+    static int utopianTree(int n) {
+        int height = 1;
+
+        if (n <= 0) {
+            return height;
+        } else {
+            for (int i = 1; i <= n; i++) {
+                if (i % 2 != 0) {
+                    height *= 2;
+                } else {
+                    height += 1;
+                }
+            }
+
+            return height;
+        }
+    }
+
+    //https://www.hackerrank.com/challenges/designer-pdf-viewer/problem
+    static int designerPdfViewer(int[] h, String word) {
+        char[] charArray = word.toCharArray();
+        char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+        int tallest = 0;
+
+        for (int i = 0; i < word.length(); i++) {
+            for (int j = 0; j < alphabet.length; j++) {
+                if (charArray[i] == alphabet[j]) {
+                    if (tallest < h[j]) {
+                        tallest = h[j];
+                    }
+                }
+            }
+        }
+
+        return tallest * word.length();
+
+    }
+
+    //https://www.hackerrank.com/challenges/the-hurdle-race/problem
+    static int hurdleRace(int k, int[] height) {
+        int highest = 0;
+        for (int i = 0; i < height.length; i++) {
+            if (highest < height[i]) {
+                highest = height[i];
+            }
+        }
+
+        if (highest > k) {
+            return highest - k;
+        } else {
+            return 0;
+        }
+
+    }
+
     //https://www.hackerrank.com/challenges/climbing-the-leaderboard/problem
     static int[] climbingLeaderboard(int[] scores, int[] alice) {
         int currentVal = 0;
