@@ -11,6 +11,35 @@ public class Main {
 
     }
 
+    //https://www.hackerrank.com/challenges/2d-array/problem
+    static int hourglassSum(int[][] arr) {
+        int highestSum = Integer.MIN_VALUE;
+
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                int innerSum = 0;
+                try {
+                    innerSum += arr[i][j];
+                    innerSum += arr[i][j+1];
+                    innerSum += arr[i][j+2];
+                    innerSum += arr[i+1][j+1];
+                    innerSum += arr[i+2][j];
+                    innerSum += arr[i+2][j+1];
+                    innerSum += arr[i+2][j+2];
+
+                } catch (IndexOutOfBoundsException e) {
+                    System.out.println("chill");
+                    break;
+                }
+                if (highestSum < innerSum) {
+                    highestSum = innerSum;
+                }
+            }
+        }
+
+        return highestSum;
+    }
+
     //https://www.hackerrank.com/challenges/angry-professor/problem
     static String angryProfessor(int k, int[] a) {
         int lateCounter = 0;
