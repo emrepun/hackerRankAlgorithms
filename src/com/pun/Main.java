@@ -11,6 +11,18 @@ public class Main {
 
     }
 
+    //https://www.hackerrank.com/challenges/arrays-ds/problem
+    static int[] reverseArray(int[] a) {
+        for (int i = 0; i < a.length / 2; i++) {
+            int temp = 0;
+            temp = a[i];
+            a[i] = a[a.length-1-i];
+            a[a.length-1-i] = temp;
+        }
+
+        return a;
+    }
+
     //https://www.hackerrank.com/challenges/2d-array/problem
     static int hourglassSum(int[][] arr) {
         int highestSum = Integer.MIN_VALUE;
