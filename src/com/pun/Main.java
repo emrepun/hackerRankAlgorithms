@@ -11,6 +11,23 @@ public class Main {
 
     }
 
+    //https://www.hackerrank.com/challenges/sparse-arrays/problem
+    static int[] matchingStrings(String[] strings, String[] queries) {
+        int[] returnArray = new int[queries.length];
+        for (int i = 0; i < queries.length; i++) {
+            int counter = 0;
+            for (int j = 0; j < strings.length; j++) {
+                if (queries[i].equals(strings[j])) {
+                    counter++;
+                }
+            }
+            returnArray[i] = counter;
+        }
+
+        return returnArray;
+    }
+
+
     //https://www.hackerrank.com/challenges/arrays-ds/problem
     static int[] reverseArray(int[] a) {
         for (int i = 0; i < a.length / 2; i++) {
