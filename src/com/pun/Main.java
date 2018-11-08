@@ -7,8 +7,66 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // Challenge links are given above each function.
+        int[] array = {1,54,6,32,2,34,5,46,78,3,4,5,6,3,2,9,8,4};
 
+        // Challenge links are given above each function.
+        maximumToys(array,2);
+
+    }
+
+    //https://www.hackerrank.com/challenges/mark-and-toys/problem
+    // using Java sdk Arrays.sort to get 35 points :/, which is Quicksort or Merge Sort depending on the type of array.
+    static int maximumToys(int[] prices, int k) {
+        Arrays.sort(prices);
+        int toyAmount = 0;
+        int totalCost = 0;
+
+        for (int i = 0; i < prices.length; i++) {
+            if ((prices[i] + totalCost) <= k) {
+                totalCost += prices[i];
+                toyAmount++;
+            } else {
+                break;
+            }
+        }
+
+        return toyAmount;
+
+    }
+
+
+    // this implementation times out, due to bubblesort but its cool.
+    static int maximumToysBubbleSort(int[] prices, int k) {
+        boolean isSwapped = false;
+        int toyAmount = 0;
+        int totalCost = 0;
+
+        // bubble sort but is it efficient?
+        for (int j = 0; j < prices.length-1; j++) {
+            isSwapped = false;
+            for (int i = 0; i < prices.length-j-1; i++) {
+                if (prices[i] > prices[i+1]) {
+                    int temp = prices[i];
+                    prices[i] = prices[i+1];
+                    prices[i+1] = temp;
+                }
+            }
+            if (isSwapped = false) {
+                break;
+            }
+        }
+
+        //get the amount of toys available for purchase
+        for (int i = 0; i < prices.length; i++) {
+            if ((prices[i] + totalCost) <= k) {
+                totalCost += prices[i];
+                toyAmount++;
+            } else {
+                break;
+            }
+        }
+
+        return toyAmount;
     }
 
     //https://www.hackerrank.com/challenges/sparse-arrays/problem
