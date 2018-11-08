@@ -7,10 +7,32 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int[] array = {1,54,6,32,2,34,5,46,78,3,4,5,6,3,2,9,8,4};
-
         // Challenge links are given above each function.
-        maximumToys(array,2);
+
+    }
+
+    //https://www.hackerrank.com/challenges/beautiful-days-at-the-movies/problem
+    static int beautifulDays(int i, int j, int k) {
+        int beautifulCount = 0;
+        for (int numb = i; numb <= j; numb++) {
+            int revNumb = 0;
+            int numbCopy = numb;
+
+            while (numbCopy > 0) {
+                revNumb = revNumb * 10 + numbCopy % 10;
+                numbCopy = numbCopy / 10;
+
+            }
+
+            double differenceDivided = Math.abs(numb-revNumb) / (double) k;
+
+
+            if (((differenceDivided * 10) % 10) == 0) {
+                beautifulCount++;
+            }
+        }
+
+        return beautifulCount;
 
     }
 
