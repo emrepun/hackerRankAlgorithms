@@ -11,6 +11,19 @@ public class Main {
 
     }
 
+    //https://www.hackerrank.com/challenges/save-the-prisoner/problem
+    static int saveThePrisoner(int n, int m, int s) {
+        int val = s + m - 1;
+        int returnVal = val % n;
+
+        if (returnVal == 0) {
+            return n;
+        } else {
+            return returnVal;
+        }
+
+    }
+
     //https://www.hackerrank.com/challenges/beautiful-days-at-the-movies/problem
     static int beautifulDays(int i, int j, int k) {
         int beautifulCount = 0;
