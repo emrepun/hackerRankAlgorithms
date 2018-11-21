@@ -11,6 +11,24 @@ public class Main {
 
     }
 
+
+    //https://www.hackerrank.com/challenges/strange-advertising/problem
+    static int viralAdvertising(int n) {
+        int shared = 5;
+        int liked = 2;
+        int totalLiked = 2;
+
+        while (n > 1) {
+            shared = liked * 3;
+            liked = shared / 2;
+            totalLiked += liked;
+            n--;
+        }
+
+        return totalLiked;
+
+    }
+
     //https://www.hackerrank.com/challenges/save-the-prisoner/problem
     static int saveThePrisoner(int n, int m, int s) {
         int val = s + m - 1;
@@ -21,7 +39,6 @@ public class Main {
         } else {
             return returnVal;
         }
-
     }
 
     //https://www.hackerrank.com/challenges/beautiful-days-at-the-movies/problem
