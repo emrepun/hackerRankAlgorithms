@@ -11,6 +11,21 @@ public class Main {
 
     }
 
+    //https://www.hackerrank.com/challenges/sherlock-and-squares/problem
+    static int squares(int a, int b) {
+        int count = 0;
+        int i = 1;
+        while (i*i <= b) {
+            if (i*i > a && i*i <= b) {
+                System.out.println(i*i);
+                count++;
+            }
+            i++;
+        }
+
+        return count;
+
+    }
 
     //https://www.hackerrank.com/challenges/strange-advertising/problem
     static int viralAdvertising(int n) {
