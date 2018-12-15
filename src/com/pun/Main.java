@@ -10,6 +10,44 @@ public class Main {
         // Challenge links are given above each function.
     }
 
+
+    //https://www.hackerrank.com/challenges/cut-the-sticks/problem
+    static int[] cutTheSticks(int[] arr) {
+
+        List<Integer> returnArray = new ArrayList<>();
+
+        Arrays.sort(arr);
+
+        int prev = -1;
+
+        for (int i = 0; i < arr.length; i++) {
+            int counter = 0;
+
+            if (prev == arr[i]) {
+                continue;
+            }
+
+            for (int j = 0; j < arr.length; j++) {
+
+                if (arr[j] - arr[i] >= 0) {
+                    counter++;
+                }
+            }
+
+            returnArray.add(counter);
+            prev = arr[i];
+        }
+
+        int[] result = new int[returnArray.size()];
+
+        for (int i = 0; i < returnArray.size(); i++) {
+            result[i] = returnArray.get(i);
+        }
+
+        return result;
+
+    }
+
     //https://www.hackerrank.com/challenges/library-fine/problem
     static int libraryFine(int d1, int m1, int y1, int d2, int m2, int y2) {
         if (y1 > y2) {
