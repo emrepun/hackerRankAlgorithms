@@ -10,6 +10,52 @@ public class Main {
         // Challenge links are given above each function.
     }
 
+    //https://www.hackerrank.com/challenges/jumping-on-the-clouds-revisited/problem
+    //One test case will always fail, its a bug.
+    static int jumpingOnClouds(int[] c, int k) {
+        int e = 100;
+        int n = c.length;
+        int index = 0;
+        int current;
+
+        do {
+            index = (index + k) % n;
+            current = c[index];
+
+            if (current == 1) {
+                e -= 3;
+            } else {
+                e -= 1;
+            }
+
+        } while (index != 0);
+
+        return e;
+
+
+//        while (true) {
+//            current = c[index];
+//
+//            index += k;
+//            index %= n;
+//
+//            if (current == 1) {
+//                e -= 3;
+//            } else {
+//                e -= 1;
+//            }
+//
+//            if (index == 0) {
+//
+//                break;
+//            }
+//
+//
+//        }
+
+
+
+    }
 
     //https://www.hackerrank.com/challenges/cut-the-sticks/problem
     static int[] cutTheSticks(int[] arr) {
