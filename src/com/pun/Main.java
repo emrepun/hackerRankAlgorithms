@@ -1,6 +1,7 @@
 package com.pun;
 
 import java.lang.reflect.Array;
+import java.math.BigInteger;
 import java.util.*;
 
 public class Main {
@@ -8,6 +9,36 @@ public class Main {
     public static void main(String[] args) {
 
         // Challenge links are given above each function.
+    }
+
+
+    //https://www.hackerrank.com/challenges/extra-long-factorials/problem
+    static void extraLongFactorials(int n) {
+        BigInteger factorial = BigInteger.valueOf(1);
+
+        while (n > 0) {
+            factorial = factorial.multiply(BigInteger.valueOf(n));
+            n--;
+        }
+
+        System.out.println(factorial);
+
+    }
+
+    //https://www.hackerrank.com/challenges/find-digits/problem
+    static int findDigits(int n) {
+        int count = 0;
+        int digit = 0;
+        int innerN = n;
+        while (innerN > 0) {
+            digit = innerN % 10;
+            innerN /= 10;
+            if (digit != 0 && n % digit == 0) {
+                count++;
+            }
+        }
+
+        return count;
     }
 
     //https://www.hackerrank.com/challenges/jumping-on-the-clouds-revisited/problem
