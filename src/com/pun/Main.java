@@ -11,6 +11,55 @@ public class Main {
         // Challenge links are given above each function.
     }
 
+    //https://www.hackerrank.com/challenges/encryption/problem
+    static String encryption(String s) {
+        int numb = s.length();
+        int lower = (int)Math.sqrt(numb);
+        int upper = lower + 1;
+
+        if ((lower * upper) < numb) {
+            lower = upper;
+        }
+
+        System.out.println(lower);
+        System.out.println(upper);
+
+        String[][] grid = new String[lower][upper];
+
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[i].length; j++) {
+                try {
+                    char c = s.charAt((upper * i) + j);
+                    grid[i][j] = Character.toString(c);
+                } catch (IndexOutOfBoundsException e) {
+                    grid[i][j] = " ";
+                }
+            }
+        }
+
+        List<Character> build = new ArrayList<>();
+        char lastChar = ' ';
+
+        for (int i = 0; i < upper; i++) {
+            for (int j = 0; j < lower; j++) {
+                build.add((grid[j][i]).charAt(0));
+                lastChar = (grid[j][i]).charAt(0);
+            }
+
+            if (lastChar != ' ') {
+                build.add(" ".charAt(0));
+            }
+        }
+
+        StringBuilder builder = new StringBuilder(build.size());
+        for (Character c: build) {
+            builder.append(c);
+        }
+
+        return builder.toString();
+
+    }
+
     //https://www.hackerrank.com/challenges/equality-in-a-array/problem
     static int equalizeArray(int[] arr) {
         Map<Integer, Integer> numbers = new HashMap<>();
