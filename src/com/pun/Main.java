@@ -11,6 +11,59 @@ public class Main {
         // Challenge links are given above each function.
     }
 
+    //https://www.hackerrank.com/challenges/equality-in-a-array/problem
+    static int equalizeArray(int[] arr) {
+        Map<Integer, Integer> numbers = new HashMap<>();
+        int mostOccurringNumb = 0;
+        int maxAmount = 0;
+        int removeCount = 0;
+
+        for(int i: arr) {
+            if (numbers.containsKey(i)) {
+                int amount = numbers.get(i);
+                amount++;
+                numbers.put(i, amount);
+
+                if (amount > maxAmount) {
+                    mostOccurringNumb = i;
+                    maxAmount = amount;
+                }
+
+            } else {
+                numbers.put(i, 1);
+            }
+        }
+
+
+        for(int i: arr) {
+            if (i != mostOccurringNumb) {
+                removeCount++;
+            }
+        }
+
+        if (maxAmount > 0) {
+            return removeCount;
+        } else {
+            return arr.length;
+        }
+    }
+
+    //https://www.hackerrank.com/challenges/permutation-equation/problem
+    static int[] permutationEquation(int[] p) {
+        HashMap<Integer, Integer> dictionary = new HashMap<>();
+
+        for (int i = 0; i < p.length; i++) {
+            dictionary.put(p[i], i+1);
+        }
+
+        int[] returnArray = new int[p.length];
+
+        for(int i = 1; i <= p.length; i++) {
+            returnArray[i] = (dictionary.get(dictionary.get(i)));
+        }
+
+        return returnArray;
+    }
 
     //https://www.hackerrank.com/challenges/extra-long-factorials/problem
     static void extraLongFactorials(int n) {
@@ -62,29 +115,6 @@ public class Main {
         } while (index != 0);
 
         return e;
-
-
-//        while (true) {
-//            current = c[index];
-//
-//            index += k;
-//            index %= n;
-//
-//            if (current == 1) {
-//                e -= 3;
-//            } else {
-//                e -= 1;
-//            }
-//
-//            if (index == 0) {
-//
-//                break;
-//            }
-//
-//
-//        }
-
-
 
     }
 
