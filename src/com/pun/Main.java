@@ -4,11 +4,109 @@ import java.lang.reflect.Array;
 import java.math.BigInteger;
 import java.util.*;
 
+
+
 public class Main {
 
     public static void main(String[] args) {
 
         // Challenge links are given above each function.
+    }
+
+    static void reversePrint(SinglyLinkedListNode head) {
+        List<Integer> list = new ArrayList();
+        if (head == null) {
+            return;
+        }
+
+        while (head != null) {
+            list.add(head.data);
+            head = head.next;
+        }
+
+        for (int i = list.size() - 1; i >= 0; i--) {
+            System.out.println(list.get(i));
+        }
+
+        // Could use stack as well.
+
+    }
+
+    static SinglyLinkedListNode deleteNode(SinglyLinkedListNode head, int position) {
+        if(position == 0) {
+            head = head.next;
+        } else {
+            SinglyLinkedListNode current;
+            current = head;
+
+            for(int i=0;i<position-1;i++){
+                current=current.next;
+            }
+
+            current.next = current.next.next;
+        }
+
+        return head;
+
+
+    }
+
+    static SinglyLinkedListNode insertNodeAtPosition(SinglyLinkedListNode head, int data, int position) {
+        SinglyLinkedListNode newNode = new SinglyLinkedListNode(data);
+        if (head == null) {
+            return newNode;
+        }
+
+        SinglyLinkedListNode node = head;
+        int counter = 0;
+        while (node.next != null) {
+            node = node.next;
+            counter++;
+            if (counter == position - 1) {
+                SinglyLinkedListNode temp = node.next;
+                node.next = newNode;
+                newNode.next = temp;
+                break;
+            }
+        }
+
+        return head;
+
+    }
+
+    static SinglyLinkedListNode insertNodeAtHead(SinglyLinkedListNode llist, int data) {
+        SinglyLinkedListNode newNode = new SinglyLinkedListNode(data);
+        if (llist != null) {
+            newNode.next = llist;
+        } else {
+            return newNode;
+        }
+
+        return newNode;
+    }
+
+    static SinglyLinkedListNode insertNodeAtTail(SinglyLinkedListNode head, int data) {
+        SinglyLinkedListNode node = new SinglyLinkedListNode(data);
+        node.next = null;
+        if (head == null) {
+            head = node;
+        } else {
+            SinglyLinkedListNode tail = head;
+            while(tail.next != null) {
+                tail = tail.next;
+            }
+            tail.next = node;
+        }
+
+        return head;
+    }
+
+    static void printLinkedList(SinglyLinkedListNode head) {
+        System.out.println(head.data);
+        if (head.next != null) {
+            printLinkedList(head.next);
+        }
+
     }
 
     //https://www.hackerrank.com/challenges/encryption/problem
