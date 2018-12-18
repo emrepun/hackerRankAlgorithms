@@ -13,6 +13,29 @@ public class Main {
         // Challenge links are given above each function.
     }
 
+    static SinglyLinkedListNode reverse(SinglyLinkedListNode head) {
+        if (head == null) {
+            return null;
+        }
+
+        SinglyLinkedListNode currentNode;
+        SinglyLinkedListNode prev;
+        SinglyLinkedListNode nextNode;
+        prev = null;
+        currentNode = head;
+
+        while (currentNode != null) {
+            nextNode = currentNode.next;
+            currentNode.next = prev;
+            prev = currentNode;
+            currentNode = nextNode;
+        }
+
+        return prev;
+
+    }
+
+    //https://www.hackerrank.com/challenges/print-the-elements-of-a-linked-list-in-reverse/problem
     static void reversePrint(SinglyLinkedListNode head) {
         List<Integer> list = new ArrayList();
         if (head == null) {
@@ -32,6 +55,7 @@ public class Main {
 
     }
 
+    //https://www.hackerrank.com/challenges/delete-a-node-from-a-linked-list/problem
     static SinglyLinkedListNode deleteNode(SinglyLinkedListNode head, int position) {
         if(position == 0) {
             head = head.next;
@@ -51,6 +75,7 @@ public class Main {
 
     }
 
+    //https://www.hackerrank.com/challenges/insert-a-node-at-a-specific-position-in-a-linked-list/problem
     static SinglyLinkedListNode insertNodeAtPosition(SinglyLinkedListNode head, int data, int position) {
         SinglyLinkedListNode newNode = new SinglyLinkedListNode(data);
         if (head == null) {
@@ -74,6 +99,7 @@ public class Main {
 
     }
 
+    //https://www.hackerrank.com/challenges/insert-a-node-at-the-head-of-a-linked-list/problem
     static SinglyLinkedListNode insertNodeAtHead(SinglyLinkedListNode llist, int data) {
         SinglyLinkedListNode newNode = new SinglyLinkedListNode(data);
         if (llist != null) {
@@ -85,6 +111,7 @@ public class Main {
         return newNode;
     }
 
+    //https://www.hackerrank.com/challenges/insert-a-node-at-the-tail-of-a-linked-list/problem
     static SinglyLinkedListNode insertNodeAtTail(SinglyLinkedListNode head, int data) {
         SinglyLinkedListNode node = new SinglyLinkedListNode(data);
         node.next = null;
@@ -101,6 +128,7 @@ public class Main {
         return head;
     }
 
+    //https://www.hackerrank.com/challenges/print-the-elements-of-a-linked-list/problem
     static void printLinkedList(SinglyLinkedListNode head) {
         System.out.println(head.data);
         if (head.next != null) {
