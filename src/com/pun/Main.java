@@ -13,6 +13,52 @@ public class Main {
         // Challenge links are given above each function.
     }
 
+    //https://www.hackerrank.com/challenges/get-the-value-of-the-node-at-a-specific-position-from-the-tail/problem
+    static int getNode(SinglyLinkedListNode head, int positionFromTail) {
+        //Space complexity increased to gain time complexity.
+        //We could also go with iterative approach to have O(1) space complexity.
+        List<SinglyLinkedListNode> nodeList = new ArrayList<>();
+
+        while (head != null) {
+            nodeList.add(head);
+            head = head.next;
+        }
+
+        return nodeList.get(nodeList.size() - 1 - positionFromTail).data;
+
+    }
+
+    //https://www.hackerrank.com/challenges/merge-two-sorted-linked-lists/problem
+    static SinglyLinkedListNode mergeLists(SinglyLinkedListNode head1, SinglyLinkedListNode head2) {
+        SinglyLinkedListNode head3;
+        if (head1.data < head2.data) {
+            head3 = head1;
+        } else {
+            head3 = head2;
+        }
+
+        SinglyLinkedListNode tempHead = head3;
+        while (head1 != null && head2 != null) {
+            if (head1.data < head2.data) {
+                tempHead.next = head1;
+                head1 = head1.next;
+            } else {
+                tempHead.next = head2;
+                head2 = head2.next;
+            }
+
+            tempHead = tempHead.next;
+        }
+
+        if (head1 == null) {
+            tempHead.next = head2;
+        } else {
+            tempHead.next = head1;
+        }
+
+        return head3;
+    }
+
     //https://www.hackerrank.com/challenges/compare-two-linked-lists/problem
     static boolean compareLists(SinglyLinkedListNode head1, SinglyLinkedListNode head2) {
 
