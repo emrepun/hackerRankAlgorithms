@@ -13,6 +13,26 @@ public class Main {
         // Challenge links are given above each function.
     }
 
+    //https://www.hackerrank.com/challenges/delete-duplicate-value-nodes-from-a-sorted-linked-list/problem
+    static SinglyLinkedListNode removeDuplicates(SinglyLinkedListNode head) {
+        SinglyLinkedListNode temp = head;
+        while (temp != null) {
+            try {
+                if (temp.data == temp.next.data) {
+                    temp.next = temp.next.next;
+                    continue;
+                }
+
+                temp = temp.next;
+            } catch (NullPointerException n) {
+                break;
+            }
+
+        }
+
+        return head;
+    }
+
     //https://www.hackerrank.com/challenges/get-the-value-of-the-node-at-a-specific-position-from-the-tail/problem
     static int getNode(SinglyLinkedListNode head, int positionFromTail) {
         //Space complexity increased to gain time complexity.
