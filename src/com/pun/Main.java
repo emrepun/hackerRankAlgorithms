@@ -13,6 +13,28 @@ public class Main {
         // Challenge links are given above each function.
     }
 
+    //https://www.hackerrank.com/challenges/detect-whether-a-linked-list-contains-a-cycle/problem
+    //ref: https://en.wikipedia.org/wiki/Cycle_detection
+    static boolean hasCycle(SinglyLinkedListNode head) {
+        SinglyLinkedListNode slow = head;
+        SinglyLinkedListNode fast = head;
+
+        while (head != null && head.next != null) {
+            try {
+                slow = slow.next;
+                fast = fast.next.next;
+
+                if (slow == fast) {
+                    return true;
+                }
+            } catch (NullPointerException n) {
+                break;
+            }
+        }
+
+        return false;
+    }
+
     //https://www.hackerrank.com/challenges/delete-duplicate-value-nodes-from-a-sorted-linked-list/problem
     static SinglyLinkedListNode removeDuplicates(SinglyLinkedListNode head) {
         SinglyLinkedListNode temp = head;
@@ -27,7 +49,6 @@ public class Main {
             } catch (NullPointerException n) {
                 break;
             }
-
         }
 
         return head;
