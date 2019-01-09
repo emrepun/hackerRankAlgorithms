@@ -13,6 +13,49 @@ public class Main {
         // Challenge links are given above each function.
     }
 
+    //https://www.hackerrank.com/challenges/ctci-ransom-note/problem
+    static void checkMagazine(String[] magazine, String[] note) {
+        HashMap<String, Integer> hashMap = new HashMap<>();
+
+        for (String word: magazine) {
+            if (!hashMap.containsKey(word)) {
+                hashMap.put(word,1);
+            } else {
+                int count = hashMap.get(word);
+                hashMap.replace(word, count, count+1);
+            }
+        }
+
+        for (String word: note) {
+            if (!hashMap.containsKey(word)) {
+                System.out.println("No");
+                return;
+            } else {
+                int count = hashMap.get(word);
+                if (count <= 0) {
+                    System.out.println("No");
+                    return;
+                }
+                hashMap.replace(word, count, count - 1);
+            }
+        }
+
+        System.out.println("Yes");
+    }
+
+    static int findMergeNode(SinglyLinkedListNode head1, SinglyLinkedListNode head2) {
+        while (head1 != null && head2 != null) {
+            System.out.println(head1.data);
+            System.out.println(head2.data);
+
+            head1 = head1.next;
+            head2 = head2.next;
+        }
+
+        return 1;
+
+    }
+
     //https://www.hackerrank.com/challenges/detect-whether-a-linked-list-contains-a-cycle/problem
     //ref: https://en.wikipedia.org/wiki/Cycle_detection
     static boolean hasCycle(SinglyLinkedListNode head) {
