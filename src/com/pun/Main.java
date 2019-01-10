@@ -13,6 +13,33 @@ public class Main {
         // Challenge links are given above each function.
     }
 
+    //https://www.hackerrank.com/challenges/jesse-and-cookies/problem
+    static int cookies(int k, int[] A) {
+        Queue<Integer> queue = new PriorityQueue<>();
+        int counter = 0;
+        for (Integer element: A) {
+            queue.add(element);
+        }
+
+        while (queue.size() > 1) {
+            if (queue.peek() > k) {
+                return counter;
+            }
+
+            int lowest = queue.poll();
+            int second = queue.poll();
+            int temp = lowest + 2 * second;
+            queue.add(temp);
+            counter++;
+        }
+
+        if (queue.size() >= 1 && queue.peek() > k) {
+            return counter;
+        } else {
+            return -1;
+        }
+    }
+
     //https://www.hackerrank.com/challenges/ctci-ransom-note/problem
     static void checkMagazine(String[] magazine, String[] note) {
         HashMap<String, Integer> hashMap = new HashMap<>();
