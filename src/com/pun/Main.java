@@ -3,14 +3,153 @@ package com.pun;
 import java.lang.reflect.Array;
 import java.math.BigInteger;
 import java.util.*;
-
+import java.util.Stack;
+import java.util.HashMap;
+import java.util.Collections;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class Main {
 
     public static void main(String[] args) {
 
-        // Challenge links are given above each function.
+
+    }
+
+    //https://www.hackerrank.com/contests/projecteuler/challenges/euler003
+    static long largestPrimeThing(long value) {
+        long largestPrime = 0;
+        for (int i = 0; i <= value; i++) {
+            if (value % i == 0) {
+                boolean isPrime = true;
+                for (int j = 2; j < i; j++) {
+                    if (i % j == 0) {
+                        isPrime = false;
+                        break;
+                    }
+                }
+                if (isPrime) {
+                    largestPrime = i;
+                }
+            }
+        }
+
+        return largestPrime;
+    }
+
+    //https://www.hackerrank.com/contests/projecteuler/challenges/euler002
+    static long oddSumFibonacciThing(long value) {
+        long sum = 0;
+        int previous = 0;
+        int current = 1;
+
+        while (current < value) {
+            int val = current + previous;
+            if (val % 2 == 0 && val < value) {
+                sum += val;
+            }
+
+            previous = current;
+            current = val;
+        }
+
+        return sum;
+
+    }
+
+    //https://www.hackerrank.com/contests/projecteuler/challenges/euler001
+    static int threeNFiveMultiplierFinder(int value) {
+        int sum = 0;
+
+        for (int i = 0; i < value; i++) {
+            if(i % 3 == 0) {
+                sum += i;
+            } else if (i % 5 == 0) {
+                sum += i;
+            }
+        }
+
+        return sum;
+
+    }
+
+    static void converter(String numb) {
+        HashMap<String, Integer> hashMap = new HashMap<>();
+        hashMap.put("zero",0);
+        hashMap.put("one",1);
+        hashMap.put("two",2);
+        hashMap.put("three",3);
+        hashMap.put("four",4);
+        hashMap.put("five",5);
+        hashMap.put("six",6);
+        hashMap.put("seven",7);
+        hashMap.put("eight",8);
+        hashMap.put("nine",9);
+        hashMap.put("ten",10);
+        hashMap.put("eleven",11);
+        hashMap.put("twelve",12);
+        hashMap.put("thirteen",13);
+        hashMap.put("fourteen",14);
+        hashMap.put("fifteen",15);
+        hashMap.put("sixteen",16);
+        hashMap.put("seventeen",17);
+        hashMap.put("eighteen",18);
+        hashMap.put("nineteen",19);
+        hashMap.put("twenty",20);
+        hashMap.put("thirty",30);
+        hashMap.put("forty",40);
+        hashMap.put("fifty",50);
+        hashMap.put("sixty",60);
+        hashMap.put("seventy",70);
+        hashMap.put("eighty",80);
+        hashMap.put("ninety",90);
+        hashMap.put("hundred",100);
+        hashMap.put("thousand",1000);
+        hashMap.put("million",1000000);
+        hashMap.put("negative",-1);
+        int result = 0;
+        String[] wordArray = numb.split(" ");
+
+        int endMultiplier = 1;
+
+        int previous = 1;
+
+        if (wordArray[0].equals("negative")) {
+            endMultiplier *= -1;
+        }
+
+        for (int i = 0; i < wordArray.length; i++) {
+            if(wordArray[i].equals("negative")) {
+                continue;
+            }
+            int val = hashMap.get(wordArray[i]);
+            if (val == 100) {
+                result += val*previous;
+            } else if (val < 10 && (wordArray.length - i) >= 2) {
+
+            } else {
+                result += val;
+            }
+            previous = val;
+        }
+
+        System.out.println(result * endMultiplier);
+
+    }
+
+    static void remover(String input) {
+        String[] divided = input.split(",");
+        String actual = divided[0];
+        String charsToRemove = divided[1];
+        char[] chars = charsToRemove.toCharArray();
+
+        for (char character: chars) {
+            String charAsString = "" + character;
+            actual = actual.replace(charAsString, "");
+        }
+
+        System.out.println(actual);
     }
 
     //https://www.hackerrank.com/challenges/jesse-and-cookies/problem
@@ -26,6 +165,8 @@ public class Main {
                 return counter;
             }
 
+            Stack<String> myStack = new Stack<>();
+
             int lowest = queue.poll();
             int second = queue.poll();
             int temp = lowest + 2 * second;
@@ -38,6 +179,30 @@ public class Main {
         } else {
             return -1;
         }
+    }
+
+    static boolean check(String line) {
+        Stack<Character> inputStack = new Stack();
+        for (int i = 0; i < line.length(); i++) {
+            char character = line.charAt(i);
+            if (character == '(' || character == '{' || character == '[') {
+                inputStack.push(character);
+            } else if (character == ']') {
+                if (inputStack.pop() != '[' ) {
+                    return false;
+                }
+            } else if (character == '}') {
+                if (inputStack.pop() != '{') {
+                    return false;
+                }
+            } else if (character == ')') {
+                if (inputStack.pop() != '(') {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 
     //https://www.hackerrank.com/challenges/ctci-ransom-note/problem
