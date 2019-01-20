@@ -17,6 +17,29 @@ public class Main {
 
     }
 
+    //https://www.hackerrank.com/contests/projecteuler/challenges/euler005/problem
+    static int smallestDivisor(int upper) {
+        int numb = upper;
+        boolean hasFound = true;
+        while (true) {
+            for (int i = 1; i <= upper; i++) {
+                if (numb % i != 0) {
+                    hasFound = false;
+                    break;
+                }
+
+                hasFound = true;
+            }
+            if (hasFound) {
+                break;
+            } else {
+                numb++;
+            }
+        }
+
+        return numb;
+    }
+
     //https://www.hackerrank.com/contests/projecteuler/challenges/euler004
     //1/2 method of the question
     static long threeDigitsPalindrome(long value) {
