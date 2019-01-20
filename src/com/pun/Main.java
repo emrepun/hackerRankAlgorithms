@@ -17,6 +17,47 @@ public class Main {
 
     }
 
+    //https://www.hackerrank.com/contests/projecteuler/challenges/euler004
+    //1/2 method of the question
+    static long threeDigitsPalindrome(long value) {
+        long largest = 0;
+
+        for (int i = 100; i <= 999; i++) {
+            for (int j = 100; j<= 999; j++) {
+
+                if (i*j < value && i*j > largest) {
+                    if (isPalindrome(i*j)) {
+                        largest = i*j;
+                    }
+                }
+            }
+        }
+
+        return largest;
+
+    }
+
+    //https://www.hackerrank.com/contests/projecteuler/challenges/euler004
+    //2/2 method of the question
+    static boolean isPalindrome(long value) {
+        long reverse = 0;
+        long original = value;
+        while(value > 0) {
+
+            reverse *= 10;
+            reverse += (value % 10);
+            value /= 10;
+        }
+
+        if (reverse == original) {
+            return true;
+        }
+
+        return false;
+    }
+
+
+
     //https://www.hackerrank.com/contests/projecteuler/challenges/euler003
     static long largestPrimeThing(long value) {
         long largestPrime = 0;
