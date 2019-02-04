@@ -17,6 +17,17 @@ public class Main {
 
     }
 
+    static void sumSquareDifference(long limit) {
+        long smallerSum = 0;
+        long largerSum = 0;
+        for (int i = 1; i <= limit; i++) {
+            smallerSum += i;
+            largerSum += i*i;
+        }
+
+        System.out.println((smallerSum * smallerSum) - largerSum);
+    }
+
     //https://www.hackerrank.com/contests/projecteuler/challenges/euler005/problem
     static int smallestDivisor(int upper) {
         int numb = upper;
