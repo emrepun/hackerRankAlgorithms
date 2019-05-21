@@ -9,7 +9,6 @@ import java.util.Collections;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
 public class Main {
 
     public static void main(String[] args) {
@@ -17,6 +16,29 @@ public class Main {
 
     }
 
+    //https://www.hackerrank.com/challenges/two-strings/problem
+    static String twoStrings(String s1, String s2) {
+        Set<Character> first = new HashSet<>();
+        Set<Character> second = new HashSet<>();
+
+        for (char c: s1.toCharArray()) {
+            first.add(c);
+        }
+
+        for (char c: s2.toCharArray()) {
+            second.add(c);
+        }
+
+        for (char c: first) {
+            if (second.contains(c)) {
+                return "YES";
+            }
+        }
+
+        return "NO";
+    }
+
+    //https://www.hackerrank.com/contests/projecteuler/challenges/euler006
     static void sumSquareDifference(long limit) {
         long smallerSum = 0;
         long largerSum = 0;
