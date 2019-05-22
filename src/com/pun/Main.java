@@ -9,10 +9,54 @@ import java.util.Collections;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static java.lang.Math.abs;
+
 public class Main {
 
     public static void main(String[] args) {
 
+
+    }
+
+    //https://www.hackerrank.com/challenges/ctci-making-anagrams/problem
+    static int makeAnagram(String a, String b) {
+        HashMap<Character, Integer> dictionaryA = new HashMap<>();
+        HashMap<Character, Integer> dictionaryB = new HashMap<>();
+        int counter = 0;
+
+        for (char c: a.toCharArray()) {
+            if (!dictionaryA.containsKey(c)) {
+                dictionaryA.put(c,1);
+            } else {
+                dictionaryA.put(c, dictionaryA.get(c) + 1);
+            }
+        }
+
+        for (char c: b.toCharArray()) {
+            if (!dictionaryB.containsKey(c)) {
+                dictionaryB.put(c,1);
+            } else {
+                dictionaryB.put(c, dictionaryB.get(c) + 1);
+            }
+        }
+
+        for (Character key: dictionaryA.keySet()) {
+            if (dictionaryB.containsKey(key)) {
+                if (!dictionaryB.get(key).equals(dictionaryA.get(key))) {
+                    counter += abs(dictionaryA.get(key) - dictionaryB.get(key));
+                }
+            } else {
+                counter += dictionaryA.get(key);
+            }
+        }
+
+        for (Character key: dictionaryB.keySet()) {
+            if (!dictionaryA.containsKey(key)) {
+                counter += dictionaryB.get(key);
+            }
+        }
+
+        return counter;
 
     }
 
@@ -845,7 +889,7 @@ public class Main {
 
             }
 
-            double differenceDivided = Math.abs(numb-revNumb) / (double) k;
+            double differenceDivided = abs(numb-revNumb) / (double) k;
 
 
             if (((differenceDivided * 10) % 10) == 0) {
@@ -1093,7 +1137,7 @@ public class Main {
         for (int i = 0; i < a.size(); i++) {
             int innerCounter = 0;
             for (int j = i+1; j < a.size(); j++) {
-                if (Math.abs(a.get(i) - a.get(j)) <= 1) {
+                if (abs(a.get(i) - a.get(j)) <= 1) {
                     innerCounter++;
                     if (innerCounter > counter) {
                         selectedNumber = a.get(i);
@@ -1129,9 +1173,9 @@ public class Main {
 
         for(int i=0;i<8;i++)
         {
-            cost[i] = Math.abs(t[i][0]-s[0][0]) + Math.abs(t[i][1]-s[0][1]) + Math.abs(t[i][2]-s[0][2]);
-            cost[i] = cost[i] + Math.abs(t[i][3]-s[1][0]) + Math.abs(t[i][4]-s[1][1]) + Math.abs(t[i][5]-s[1][2]);
-            cost[i] = cost[i] + Math.abs(t[i][6]-s[2][0]) + Math.abs(t[i][7]-s[2][1]) + Math.abs(t[i][8]-s[2][2]);
+            cost[i] = abs(t[i][0]-s[0][0]) + abs(t[i][1]-s[0][1]) + abs(t[i][2]-s[0][2]);
+            cost[i] = cost[i] + abs(t[i][3]-s[1][0]) + abs(t[i][4]-s[1][1]) + abs(t[i][5]-s[1][2]);
+            cost[i] = cost[i] + abs(t[i][6]-s[2][0]) + abs(t[i][7]-s[2][1]) + abs(t[i][8]-s[2][2]);
         }
 
         Arrays.sort(cost);
@@ -1140,9 +1184,9 @@ public class Main {
 
     //https://www.hackerrank.com/challenges/cats-and-a-mouse/problem
     static String catAndMouse(int x, int y, int z) {
-        if (Math.abs(x - z) == Math.abs(y - z)) {
+        if (abs(x - z) == abs(y - z)) {
             return "Mouse C";
-        } else if (Math.abs(x - z) < Math.abs(y - z)) {
+        } else if (abs(x - z) < abs(y - z)) {
             return "Cat A";
         } else {
             return "Cat B";
@@ -1635,7 +1679,7 @@ public class Main {
             length--;
         }
 
-        return Math.abs(leftSum-rightSum);
+        return abs(leftSum-rightSum);
 
     }
 
