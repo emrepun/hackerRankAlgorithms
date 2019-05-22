@@ -18,6 +18,24 @@ public class Main {
 
     }
 
+    //https://www.hackerrank.com/challenges/minimum-absolute-difference-in-an-array/problem
+    //Complexity increases without Java built-in sort algorithm.
+    static int minimumAbsoluteDifference(int[] arr) {
+        int minDiff = Integer.MAX_VALUE;
+        Arrays.sort(arr);
+        for (int i = 1; i < arr.length; i++) {
+            int diff = arr[i] - arr[i-1];
+            if (diff == 0) {
+                return 0;
+            }
+            if ((diff) < minDiff) {
+                minDiff = arr[i] - arr[i-1];
+            }
+        }
+
+        return minDiff;
+    }
+
     //https://www.hackerrank.com/challenges/ctci-making-anagrams/problem
     static int makeAnagram(String a, String b) {
         HashMap<Character, Integer> dictionaryA = new HashMap<>();
