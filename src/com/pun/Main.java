@@ -18,6 +18,28 @@ public class Main {
 
     }
 
+    //https://www.hackerrank.com/challenges/lisa-workbook/problem
+    static int workbook(int n, int k, int[] arr) {
+        int pageNumb = 0;
+        int special = 0;
+
+        for (int i = 0; i < arr.length; i ++) {
+            pageNumb++;
+            for (int j = 1; j <= arr[i]; j++) {
+                if (j == pageNumb) {
+                    special++;
+                }
+
+                if (j % k == 0 && j != arr[i]) {
+                    pageNumb++;
+                }
+            }
+        }
+
+        return special;
+    }
+
+
     //https://www.hackerrank.com/challenges/minimum-distances/problem
     static int minimumDistances(int[] a) {
 
