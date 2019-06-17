@@ -18,6 +18,48 @@ public class Main {
 
     }
 
+    //https://www.hackerrank.com/challenges/minimum-distances/problem
+    static int minimumDistances(int[] a) {
+
+        //O(n) solution:
+        int currentDist = Integer.MAX_VALUE;
+        boolean hasChanged = false;
+
+        HashMap<Integer, Integer> dictionary = new HashMap<>();
+
+        for (int i = 0; i < a.length; i++) {
+            if (!dictionary.containsKey(a[i])) {
+                dictionary.put(a[i], i);
+            } else {
+                int diff = Math.abs(dictionary.get(a[i])- 1);
+                if (diff < currentDist) {
+                    hasChanged = true;
+                    currentDist = diff;
+                }
+            }
+        }
+
+        return hasChanged ? currentDist : -1;
+
+        // O(n^2) complexity solution:
+//        int currentDist = Integer.MAX_VALUE;
+//        boolean hasChanged = false;
+//
+//        for (int i = 0; i < a.length; i++) {
+//            for (int j = i+1; j < a.length; j++) {
+//                if (a[i] == a[j]) {
+//                    int diff = Math.abs(i - j);
+//                    if (diff < currentDist) {
+//                        hasChanged = true;
+//                        currentDist = diff;
+//                    }
+//                }
+//            }
+//        }
+//
+//        return hasChanged ? currentDist : -1;
+    }
+
     //https://www.hackerrank.com/challenges/minimum-absolute-difference-in-an-array/problem
     //Complexity increases without Java built-in sort algorithm.
     static int minimumAbsoluteDifference(int[] arr) {
