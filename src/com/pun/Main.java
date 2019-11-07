@@ -10,12 +10,45 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static java.lang.Math.abs;
+import static java.lang.Math.max;
+import static java.lang.Math.min;
 
 public class Main {
 
     public static void main(String[] args) {
 
 
+    }
+
+    //https://www.hackerrank.com/challenges/append-and-delete/problem
+    static String appendAndDelete(String s, String t, int k) {
+        int sameCharCount = 0;
+
+        int firstStringCount = s.length();
+        int secondStringCount = t.length();
+
+        if (firstStringCount + secondStringCount <= k) {
+            return "Yes";
+        }
+
+        int smallOne = Math.min(firstStringCount, secondStringCount);
+        for (int i = 0; i < smallOne; i++) {
+            if (s.charAt(i) == t.charAt(i)) {
+                sameCharCount++;
+            } else {
+                break;
+            }
+        }
+
+        int deletions = firstStringCount - sameCharCount;
+        int additions = secondStringCount - sameCharCount;
+        int operationCount = deletions + additions;
+
+        if (k >= operationCount && (k - operationCount) % 2 == 0) {
+            return "Yes";
+        }
+
+        return "No";
     }
 
     //https://www.hackerrank.com/challenges/lisa-workbook/problem
