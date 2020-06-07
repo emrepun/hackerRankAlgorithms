@@ -1823,26 +1823,25 @@ public class Main {
 
     // https://www.hackerrank.com/challenges/repeated-string/problem
     static long repeatedString(String s, long n) {
-        String build = "";
-        long aCounter = 0;
+        long aCountOfPortion = 0;
+        long fullCount = n / s.length();
+        long excessCount = n % s.length();
 
-        if (s.equals("a") || s.equals("aa") || s.equals("aaa")) {
-            return n;
-        }
-
-        while (build.length() < n) {
-            build += s;
-        }
-
-        String lengthString = build.substring(0,(int)n);
-
-        for (Character c: lengthString.toCharArray()) {
-            if (c.equals('a')) {
-                aCounter++;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == 'a') {
+                aCountOfPortion++;
             }
         }
 
-        return aCounter;
+        long aCount = aCountOfPortion * fullCount;
+
+        for (int i = 0; i < excessCount; i++) {
+            if (s.charAt(i) == 'a') {
+                aCount++;
+            }
+        }
+
+        return aCount;
 
     }
 
